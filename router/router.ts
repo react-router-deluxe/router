@@ -40,6 +40,19 @@ class _Router {
   }
 }
 
-const Router = new _Router();
+class _Index {
+  Set(root: HTMLElement | null, ComponentPage: React.ReactNode) {
+    if (window.location.pathname == '/') {
+      if (React.isValidElement(ComponentPage)) {
+        ReactDOM.render(ComponentPage, root);
+      } else {
+        console.error('Invalid route value:', ComponentPage);
+      }
+    }
+  }
+}
 
-export { Router };
+const Router = new _Router();
+const Index = new _Index();
+
+export { Router, Index };
