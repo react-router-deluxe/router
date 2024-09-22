@@ -23,7 +23,7 @@ class _Router {
   Render(root: HTMLElement | null,routes: RouteConfig) {
     this.routes = routes;
     this.history.listen((location: { pathname: any; }) => {
-      const path = location.pathname;
+      const path = location.pathname.replace(/\/$/, ''); // Remove the trailing slash
       const route = this.routes[path];
       if (route) {
         if (root) {
